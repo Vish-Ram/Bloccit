@@ -8,3 +8,9 @@
 SENDGRID_PASSWORD: ydnucmxb
 SENDGRID_USERNAME: app26890645@heroku.com
 DEVISE_SECRET_KEY: sekrit123456
+AWS_ACCESS_KEY_ID: AKIAI2H7MTMHBJYFUP4Q
+AWS_SECRET_ACCESS_KEY: 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
+development:
+  AWS_BUCKET: vish-bloccit-development
+production:
+  AWS_BUCKET: vish-bloccit-production
