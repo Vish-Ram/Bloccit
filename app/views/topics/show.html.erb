@@ -25,6 +25,7 @@
        <%= image_tag(post.image.thumb.url) if post.image? %>
       </small>
     <% end %>
+    <%= will_paginate @posts %>
   </div>
   <div class="col-md-4">
     <% if policy(Post.new).create? %>
