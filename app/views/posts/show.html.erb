@@ -16,7 +16,9 @@
           <%= render @post.comments %> 
         </div>
         <div class="col-md-8">
-          <%= render partial: 'comments/form', locals:{topic: @topic, post: @post, comment: @post.comments.build } %> 
+          <% if current_user %>
+            <%= render partial: 'comments/form', locals:{topic: @topic, post: @post, comment: @post.comments.build } %>
+          <% end %> 
         </div>
   <div class="col-md-4">
     <% if policy(@post).edit? %>
