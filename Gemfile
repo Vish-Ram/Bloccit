@@ -13,6 +13,10 @@ gem 'rails', '4.0.4'
    gem 'sqlite3'
  end
 
+ group :test do
+  gem 'rspec-rails'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
