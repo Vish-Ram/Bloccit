@@ -1,10 +1,20 @@
 require 'rails_helper'
+require 'faker'
  
  describe Post do 
    describe "vote methods" do
  
      before do
-       @post = Post.create(title: 'post title', body: 'post body')
+      @user = User.new(name:     Faker::Name.name,
+                       email:    Faker::Internet.email,
+                       password: Faker::Lorem.characters(10))
+      @user.skip_confirmation!
+      @topic = Topic.create(name:         Faker::Lorem.sentence,
+                            description:  Faker::Lorem.paragraph)
+      @post = Post.create(title: 'post title', 
+                          body: 'Post bodies must be pretty long.',
+                          user: @user,
+                          topic: @topic)
        3.times { @post.votes.create(value: 1) }
        2.times { @post.votes.create(value: -1) }
      end

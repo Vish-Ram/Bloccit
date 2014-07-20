@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(params.require(:comment).permit(:body))
     @comment.post = @post
     if @comment.save
-       redirect_to [@topic, @post]
+       redirect_to [@post.topic, @post]
      else
        flash[:error] = @comment.errors.messages
      end
