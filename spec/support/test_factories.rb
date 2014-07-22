@@ -14,4 +14,12 @@ module TestFactories
    user.save
    user
  end
+
+  def comment_without_user(options={})
+    comment_options = {title: 'Comment title', body: 'Comment body'}.merge(options)
+    comment = Comment.new(comment_options)
+    allow(comment).to receive(:send_favorite_emails)
+    comment.save
+    comment 
+  end
 end
