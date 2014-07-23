@@ -13,7 +13,7 @@
       </small>
       <h2>Comments</h2>
         <div class="col-md-8">
-          <%= render partial: 'comments/comment', collection: @comments %> 
+          <%= render partial: 'comments/comment', collection: @post.comments %> 
         </div>
         <div class="col-md-8">
           <% if current_user %>
