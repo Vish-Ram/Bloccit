@@ -1,14 +1,12 @@
 require 'rails_helper'
  
  describe FavoritesController do
- 
-   include TestFactories
    include Devise::TestHelpers
  
    before do 
      @topic = Topic.create
-     @post = post_without_user({topic: @topic})
-     @user = authenticated_user
+     @post = create(:post)
+     @user = create(:user)
      sign_in @user
    end
  
@@ -18,14 +16,14 @@ require 'rails_helper'
  
        post :create, { post_id: @post.id }
  
-       expect( @user.favorites.find_by_post_id(@post.id).class ).to eq(+Favorite)
+       expect( @user.favorites.find_by_post_id(@post.id).class ).to eq(Favorite)
      end
    end
  
    describe '#destroy' do
      it "destroys the favorite for the current user and post" do
        favorite = @user.favorites.where(post: @post).create
-       expect( @user.favorites.find_by_post_id(@post.id).class ).to eq(+Favorite)
+       expect( @user.favorites.find_by_post_id(@post.id).class ).to eq(Favorite)
  
        delete :destroy, { post_id: @post.id, id: favorite.id }
  

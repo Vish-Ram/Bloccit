@@ -2,11 +2,11 @@ require 'rails_helper'
 require 'faker'
  
 describe Post do 
-  include TestFactories
+
   describe "vote methods" do
  
     before do
-      @post = post_without_user 
+      @post = create(:post)
       3.times { @post.votes.create(value: 1) }
       2.times { @post.votes.create(value: -1) }
     end
@@ -31,8 +31,8 @@ describe Post do
 
     describe 'creation' do
       it "generates an automatic up-vote" do
-        user = authenticated_user
-        post = Post.create(title: 'Post Title', body: 'This is a small post body string', user: user)
+        user = create(:user)
+        post = create(:post_with_vote, user: user)
         expect( post.up_votes ).to eq(1)
       end
     end

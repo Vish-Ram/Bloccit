@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
     authorize favorite
     if favorite.save
       flash[:notice] = "You have favorited the post!"
-      redirect_to [@post.topic, @post]
+      redirect_to topic_post_url(@post.topic, @post)
     else
       flash[:notice] = "There was an error in favoriting the post."
       redirect_to [@post.topic, @post]

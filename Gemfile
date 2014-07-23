@@ -17,6 +17,8 @@ gem 'rails', '4.0.4'
  group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 # Use SCSS for stylesheets
@@ -47,6 +49,7 @@ gem 'figaro'
 gem 'pundit'
 gem 'faker'
 gem 'devise'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
