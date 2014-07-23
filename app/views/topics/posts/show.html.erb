@@ -13,11 +13,15 @@
       </small>
       <h2>Comments</h2>
         <div class="col-md-8">
-          <%= render partial: 'comments/comment', collection: @post.comments %> 
+          <div class='js-comments'>
+            <%= render partial: 'comments/comment', collection: @post.comments %>
+          </div>
         </div>
         <div class="col-md-8">
           <% if current_user %>
-            <%= render partial: 'comments/form', locals:{topic: @topic, post: @post, comment: @post.comments.build } %>
+            <div class='new-comment'>
+              <%= render partial: 'comments/form', locals:{topic: @topic, post: @post, comment: @post.comments.build } %>
+            </div>
           <% end %> 
         </div>
   <div class="col-md-4">

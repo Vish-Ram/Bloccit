@@ -2,13 +2,18 @@ class CommentsController < ApplicationController
    respond_to :html, :js
   def create
     @post = Post.find(params[:post_id])
-    @comment = current_user.comments.build(params.require(:comment).permit(:body))
+    @comment = current_user.comments.build(comment_params)
     @comment.post = @post
+    @new_comment = Comment.new
+    authorize @comment
     if @comment.save
-       redirect_to [@post.topic, @post]
+        flash[:notice] = "Comment was created."
      else
        flash[:error] = @comment.errors.messages
      end
+     respond_with(@comment) do |format|
+      format.html {redirect_to(@post.topic, @post)}
+    end
   end
 
   def destroy
@@ -24,4 +29,11 @@ class CommentsController < ApplicationController
       format.html {redirect_to(@post.topic, @post)}
     end
   end
+
+   private
+
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
+
 end
