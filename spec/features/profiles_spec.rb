@@ -6,10 +6,10 @@ describe "Visiting profiles" do
  
   before do 
     @user = create(:user)
-    sign_in @user
     @topic = Topic.create(description: "A topic")
     @post = create(:post)
     @comment = create(:comment)
+    #sign_in @user
   end
  
   describe "not signed in" do

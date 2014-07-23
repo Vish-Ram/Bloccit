@@ -6,6 +6,8 @@ require 'rails_helper'
    before do 
      @topic = Topic.create
      @post = create(:post)
+     @post.topic = @topic
+     @post.save
      @user = create(:user)
      sign_in @user
    end
