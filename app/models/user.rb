@@ -30,4 +30,5 @@ class User < ActiveRecord::Base
          .group('users.id') # Instructs the database to group the results so that each user will be returned in a distinct row
          .order('rank DESC') # Instructs the database to order the results in descending order, by the rank that we created in this query. (rank = comment count + post count)
   end
+
 end
